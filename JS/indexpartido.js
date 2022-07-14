@@ -40,8 +40,10 @@ function datos_partidos(data){
         visitante.innerHTML = data[i].awayTeam.name
         let local = document.createElement("p")
         local.innerHTML = data[i].homeTeam.name
-        let fecha = document.createElement("p")
-        fecha.innerHTML = data[i].utcDate
+        //Caso concreto para declarar la fecha
+        //Las fechas se manejan como new Date() en JS
+        let fecha = new Date(data[i].utcDate)
+
         let jornada = document.createElement("p")
         jornada.innerHTML = data[i].matchday
         let resultado_visitante = document.createElement("p")
@@ -57,7 +59,7 @@ function datos_partidos(data){
         escudo_visitante.classList.add("escudo_visitante")
         
 
-        let partidos = [jornada,visitante,escudo_visitante,resultado_visitante,resultado_local,escudo_local,local,fecha]
+        let partidos = [jornada,visitante,escudo_visitante,resultado_visitante,resultado_local,escudo_local,local,fecha.toLocaleString()]
         for (let j = 0; j < partidos.length; j++) {
             const td = document.createElement("td")
             td.append(partidos[j])
