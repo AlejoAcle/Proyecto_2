@@ -55,46 +55,33 @@ Descripción de las funcionalidades aplicadas.
 -`datos_clubes()` función para recorrer la array y extraer las imagenes correspondientes a cada club, para posteriormente crear accesos directos a la página oficial de cada uno.
 
 
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
-
-
 ## Construido con 🛠️
-
 
 * Visual Studio Code (VSC)
 * Google Chrome
 * PostMan
 
-## Contribuyendo 🖇️
 
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
+## Versiones 📌
 
-## Wiki 📖
+v1.0(29.07.2022) - Presentación proyecto
 
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
 
 ## Autores ✒️
 
-
-
 * **Alejo** - *Trabajo Inicial* - [Alejo](https://github.com/AlejoAcle)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
+* **Alexandra** - *Mentora y soporte* - 
+
+
+## To-Do ✅
+
+-Mejora del diseño
+-Filtro búsqueda activo ( ir filtrando al introducir caracteres)
+-Resultados Premier League, y liga femenina.
+-Estadísticas de Premier League y liga femenina .
 
 
 
 
 
-
-
-
-
-
-
----
 [Alejo](https://github.com/AlejoAcle) 🦖​
