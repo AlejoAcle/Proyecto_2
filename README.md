@@ -1,6 +1,9 @@
 # Título del Proyecto
 
 _Web page de **LaLiga**_
+<p align="center">
+    <img src="https://github.com/AlejoAcle/Proyecto_2/blob/master/images/laliga-h-600x600.png" alt="img LaLiga" widht="300px" height="300px">
+</p>
 
 ## Descripción 🚀
 
