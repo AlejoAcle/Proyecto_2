@@ -46,13 +46,13 @@ Descripción de las funcionalidades aplicadas.
 
 ### Funciones específicas ⌨️
 
--`filtroEquipo()` función que desarrolla 2 pasos:
+- `filtroEquipo()` función que desarrolla 2 pasos:
     -Inicialmente filtra los equipos en base al input introducido por el usuario.
     -Realiza un nuevo filtro sobre la array creada con los nombres de los equipos en base al parámetro pedido por el usuario (resultados).
--`reseteo_filtro()` permite resetear todos los filtros, desde el campo de input como los botones para resultados, permitiendo al usuario introducir una nueva búsqueda.
--`stadistics()` y `t_stadistics()` funciones encargadas de crear la tabla y filtrar los 5 equipos con mayor media de goles a favor por partido.
--`stadistics2()` y `t_stadistics2()` funciones que permiten crear la tabla y filtrar los 5 equipos con menos goles en contra como visitante.
--`datos_clubes()` función para recorrer la array y extraer las imagenes correspondientes a cada club, para posteriormente crear accesos directos a la página oficial de cada uno.
+- `reseteo_filtro()` permite resetear todos los filtros, desde el campo de input como los botones para resultados, permitiendo al usuario introducir una nueva búsqueda.
+- `stadistics()` y `t_stadistics()` funciones encargadas de crear la tabla y filtrar los 5 equipos con mayor media de goles a favor por partido.
+- `stadistics2()` y `t_stadistics2()` funciones que permiten crear la tabla y filtrar los 5 equipos con menos goles en contra como visitante.
+- `datos_clubes()` función para recorrer la array y extraer las imagenes correspondientes a cada club, para posteriormente crear accesos directos a la página oficial de cada uno.
 
 
 ## Construido con 🛠️
@@ -75,10 +75,10 @@ v1.0(29.07.2022) - Presentación proyecto
 
 ## To-Do ✅
 
--Mejora del diseño
--Filtro búsqueda activo ( ir filtrando al introducir caracteres)
--Resultados Premier League, y liga femenina.
--Estadísticas de Premier League y liga femenina .
+- Mejora del diseño
+- Filtro búsqueda activo ( ir filtrando al introducir caracteres)
+- Resultados Premier League, y liga femenina.
+- Estadísticas de Premier League y liga femenina .
 
 
 
