@@ -5,49 +5,141 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="STYLE/style.css">
-    <title>Clasificacion</title>
+    <title>CLASIFICACION</title>
 </head>
 
 <body>
+    <header>
+        <div class="logoClub" id="contenedorLogos"> </div>
+        <ul class="nav justify-content-center bg-light navbar_alta">
+            <li class="nav-item">
+                <a class="nav-link text-black" href="indexVer.html">Dónde ver</a>
+            </li>
+            <li>
+                <a class="navbar-brand " href="index.html">
+                    <img src="/images/laliga-v-300x300.png" class="bg-light" alt="" width="80" height="80">
+                </a>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button"
+                    aria-expanded="false">Idioma</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Español &#127466;&#127480;</a></li>
+                    <li><a class="dropdown-item" href="#">Inglés</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav justify-content-between  navbar_nueva">
+            <li class="nav-item">
+                <a class="nav-link active text-light" aria-current="page"
+                    href="indexclasificacion.html">Clasificación</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="indexpartido.html">Partidos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="https://www.premierleague.com/" target="_blank">Premier League</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="indexEstadísticas.html">Estadísticas</a>
+            </li>
+        </ul>
+    </header>
+    <div class="container-fluid entrada_clasificacion ">
+        <h3> Clasificación</h3>
+        <p>Temporada 2021/2022</p>
+    </div>
+    <div class="container table-responsive">
+        <table class="table table-dark table-hover ">
+            <thead class="clasificacion_tabla table-light">
+                <th>Posición</th>
+                <th class="tarjeta_club" colspan="2">Club</th>
+                <th>PJ</th>
+                <th>V</th>
+                <th>E</th>
+                <th>D</th>
+                <th>G</th>
+                <th>GC</th>
+                <th>DG</th>
+                <th>P</th>
+                <th>Últimos 5</th>
+            </thead>
+            <tbody id="t_clasificacion">
 
-    <table>
-        <thead>
-            <th>Posicion</th>
-            <th colspan="2">Equipo</th>
-            <th>PJ</th>
-            <th>V</th>
-            <th>E</th>
-            <th>D</th>
-            <th>G</th>
-            <th>GC</th>
-            <th>DG</th>
-            <th>P</th>
-            <th>Últimos 5</th>
-        </thead>
-        <tbody id="t_clasificacion">
-
-        </tbody>
-    </table>
-    <div>
-        <div>
-            <h3>Acenso/Descenso</h3>
-            <p>Fase de grupos de Champions League</p>
-            <p>Fase de grupos de Europa League</p>
-            <p>Descenso</p>
-        </div>
-        <div>
-            <h3>Leyenda</h3>
-            <p>Victoria ✔️</p>
-            <p>Derrota ❌</p>
-            <p>Empate ➖</p>
-        </div>
+            </tbody>
+        </table>
     </div>
 
+    <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-lg-3 card text-center card text-bg-secondary">
+                <div class="card-body">
+                    <h5 class="card-title">Acenso/Descenso</h5>
+                    <p class="card-text">Fase de grupos de Champions League</p>
+                    <p class="card-text">Fase de grupos de Europa League</p>
+                    <p class="card-text">Descenso</p>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 card text-center card text-bg-secondary">
+                <div class="card-body">
+                    <h5 class="card-title">Leyenda</h5>
+                    <p class="card-text">Victoria ✔️</p>
+                    <p class="card-text">Derrota ❌</p>
+                    <p class="card-text">Empate ➖</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    
+    <!-- spinner -->
+    <div class="sk-chase position-absolute top-50 start-50" id="spinner_loader">
+        <div id="dots_spinner">
+          <div class="sk-chase-dot"></div>
+          <div class="sk-chase-dot"></div>
+          <div class="sk-chase-dot"></div>
+          <div class="sk-chase-dot"></div>
+          <div class="sk-chase-dot"></div>
+          <div class="sk-chase-dot"></div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+    <footer>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="https://instagram.com/AlejoAcle" target="_blank"><button class="btn btn-link"><img
+                        src="/images/insta.png" alt="" width="20px" height="20px"></button></a>
+            <a href="https://www.linkedin.com/in/alejoacle/" target="_blank"><button class="btn btn-link"><img
+                        src="/images/linkedin.png" alt="" width="20px" height="20px"></button></a>
+            <a href="https://github.com/AlejoAcle" target="_blank"><button class="btn btn-link"><img
+                        src="/images/github.png" alt="" width="20px" height="20px"></button></a>
+        </div>
+        <p> 2022</p>
+    </footer>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
     <script src="./JS/clasificacion.js"></script>
     <script src="./JS/indexclasificacion.js"></script>
 
 
+    <script src="JS/equipos.js"></script>
+    <script src="JS/logoequipos.js"></script>
 </body>
 
 </html>

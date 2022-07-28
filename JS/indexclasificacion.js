@@ -1,5 +1,31 @@
 let equipos_clasificacion = clasificacion.standings[0].table
 
+// function getFetch(url) {
+//     mostrar_spinner()
+//     fetch(url, {
+//         method: "GET",
+//         headers: {
+//             "X-Auth-Token": "40834f61c97f47db820d37a926c3ee72"
+//         }
+//     }).then(response => {
+//         if (response.ok) {
+//             return response.json();
+//         }
+//     }).then(data => {
+//         let equipos_clasificacion = data.standings[0].table
+//         quitar_spinner()
+//         clasificaciones(equipos_clasificacion)
+
+//     }).catch(err => {
+//         console.log(err);
+//         alert("Ha ocurrido un ERROR, vuelve a recargar la pagina !")
+//     })
+// }
+
+// getFetch("https://api.football-data.org/v2/competitions/2014/standings");
+
+
+
 
 clasificaciones(equipos_clasificacion)
 //Datos de clasificacion
@@ -95,3 +121,16 @@ function clasificaciones(datos){
     tabla_clasificacion.append(tr)  
     }
 }
+
+function quitar_spinner(){
+    document.getElementById("spinner_loader").style.display="none"
+    document.getElementById("dots_spinner").style.visibility="hidden"
+}
+
+function mostrar_spinner(){
+    document.getElementById("spinner_loader").style.display="block"
+    document.getElementById("dots_spinner").style.visibility="visible"
+
+}
+
+quitar_spinner()
