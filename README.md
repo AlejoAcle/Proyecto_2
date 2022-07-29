@@ -28,7 +28,7 @@ Se han añadido enlaces directos donde poder consultar la Premier League(liga in
 
 - **HTML5** : esquema de distribución de la página.
 - **CSS3** : diseño de la interfaz.
-- **Bootstrap** : diseño de la interfaz y implementación de características *responsive* , mejorando la experiencia en cualquier dispositivo.
+- **Bootstrap** : diseño de la interfaz e implementación de características *responsive* , mejorando la experiencia en cualquier dispositivo.
 - **JavaScript** : funcionalidad y dinamismo de la página.
 - **Postman** : API Platform ,obtención de datos (utilizada inicialmente,hasta desarrollo de fetch() en los todos archivos JS).
 - **Git** y **GitHub** : control de versiones y repositorio en remoto.
