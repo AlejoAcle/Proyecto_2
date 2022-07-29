@@ -95,6 +95,26 @@ table thead th.margen_estadistica_goles{
     text-align: left;
 }
 
+.tabla_clasif_body tr:nth-of-type(1)>td:first-of-type,
+.tabla_clasif_body tr:nth-of-type(2)>td:first-of-type,
+.tabla_clasif_body tr:nth-of-type(3)>td:first-of-type,
+.tabla_clasif_body tr:nth-of-type(4)>td:first-of-type{
+    background-color: rgb(30, 107, 146);
+}
+.tabla_clasif_body tr:nth-of-type(18)>td:first-of-type,
+.tabla_clasif_body tr:nth-of-type(19)>td:first-of-type,
+.tabla_clasif_body tr:nth-of-type(20)>td:first-of-type{
+    background-color: rgb(161, 34, 34);
+}
+.tabla_clasif_body tr:nth-of-type(5)>td:first-of-type{
+    background-color: rgb(169, 96, 23);
+}
+.tabla_clasif_body tr:nth-of-type(6)>td:first-of-type{
+    background-color: rgb(29, 119, 7);
+}
+
+
+
 
 /*Banner tabla clasificación-------------------------------------------------*/
 .entrada_clasificacion{

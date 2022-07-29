@@ -65,6 +65,10 @@ Descripción de las funcionalidades aplicadas.
 * PostMan
 
 
+## Despliegue 📦
+
+Para visitar el proyecto [pulsa aquí](https://laligalejo.netlify.app)
+
 ## Versiones 📌
 
 v1.0(29.07.2022) - Presentación proyecto
