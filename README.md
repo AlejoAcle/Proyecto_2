@@ -42,9 +42,9 @@ Descripción de las funcionalidades aplicadas.
 ### Funciones genéricas 🔩
 
 - `getFetch()` empleada en los archivos JS, función encargada de obtener los datos en tiempo real de la API, sin necesidad de emplear POSTMAN.
--`datos_partidos()` función empleada para crear la tabla con los equipos, sobre esta función se desarrollarán funciones específicas para crear los filtros de búsqueda.
--`quitar_spinner()` presenten en todos los archivos JavaScript, donde se obtenien los datos de la API, permitiendo esconde el spinner despúes de recibir dichos datos.
--`clasificaciones()` función que desarrolla la tabla de clasificación de los euipos de **LaLiga**, mostrando datos como: posición, nombre del club, partidos jugados, partidos ganados, partidos empatados o perdidos, goles marcados, goles recibidos, diferencia de goles, puntos y jornada. Esta función es reutilizable para extraer datos de otras ligas.
+- `datos_partidos()` función empleada para crear la tabla con los equipos, sobre esta función se desarrollarán funciones específicas para crear los filtros de búsqueda.
+- `quitar_spinner()` presenten en todos los archivos JavaScript, donde se obtenien los datos de la API, permitiendo esconde el spinner despúes de recibir dichos datos.
+- `clasificaciones()` función que desarrolla la tabla de clasificación de los euipos de **LaLiga**, mostrando datos como: posición, nombre del club, partidos jugados, partidos ganados, partidos empatados o perdidos, goles marcados, goles recibidos, diferencia de goles, puntos y jornada. Esta función es reutilizable para extraer datos de otras ligas.
 
 
 ### Funciones específicas ⌨️
