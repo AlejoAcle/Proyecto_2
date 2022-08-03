@@ -3,8 +3,6 @@ let partidos = matches.matches
 datos_partidos(partidos)
 
 //FUNCION FETCH() DATOS TIEMPO REAL//
-
-
 // function getFetch(url) {
 //     mostrar_spinner()
 //     fetch(url, {
@@ -119,17 +117,24 @@ boton_busqueda.addEventListener("click", () => {
     filtroEquipo(partidos)
 })
 
+// let buscador_caracter = document.getElementById("cajon_input")
+// buscador_caracter.addEventListener("keyup",()  =>{
+//     filtroEquipo(partidos)
+// })
+
+
+
 
 let boton_reseteo = document.getElementById("reset")
-boton_reseteo.addEventListener("click", () =>{
+boton_reseteo.addEventListener("click", () => {
     reseteo_filtro()
 })
 
-function reseteo_filtro(){
+function reseteo_filtro() {
     document.getElementById("cajon_input").value = ""
     let botones_seleccion = document.getElementsByName("estadoPartido")
-    for (i in botones_seleccion){
-        botones_seleccion[i].checked=false
+    for (i in botones_seleccion) {
+        botones_seleccion[i].checked = false
     }
 }
 
@@ -141,33 +146,81 @@ function reseteo_filtro(){
 function filtroEquipo(club) {
     let cajon_input = document.getElementById("cajon_input").value
     //cada vez que metamos un input(variable) esta se modifica.//
+    if (cajon_input == "") {
+        return mostrar_message_introduce()
+    } else {
+        quitar_message_introduce
+    }
+
 
     let botones_filtros = document.querySelector("input[type=radio]:checked")
-    // console.log(botones_filtros)
-    let equipos_filtrados = club.filter(x => {
-        if (x.homeTeam.name.toLowerCase().includes(cajon_input.toLowerCase()) || x.awayTeam.name.toLowerCase().includes(cajon_input.toLowerCase())) {
-            return true
-        } else {
-            return false
+    console.log(botones_filtros)
+    let equipos_filtrados = []
+    for (let i = 0; i < club.length; i++) {
+        // user_team_home y user_team_away= recorre la array en busqueda de equipo que el usuario introduce, si lo encuentra...lo almacena enla array equipo_filtrado.
+        var user_team_home = club[i].homeTeam.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(cajon_input.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ""))
+        var user_team_away = club[i].awayTeam.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(cajon_input.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ""))
+
+        if (user_team_home || user_team_away) {
+            equipos_filtrados.push(club[i])
         }
-    })
+
+    }
+    if (equipos_filtrados.length === 0) {
+        return mostrar_message_valido()
+    } else {
+        quitar_message_valido()
+    }
+
+    // console.log(equipos_filtrados)
+    // let equipos_filtrados = club.filter(x => {
+    //     if (x.homeTeam.name.toLowerCase().includes(cajon_input.toLowerCase()) || x.awayTeam.name.toLowerCase().includes(cajon_input.toLowerCase())) {
+    //         return true
+    //     } else {
+    //         return false
+    //     }
+    // })
+
     if (botones_filtros === null) {
         return datos_partidos(equipos_filtrados)
     }
+    // console.log(equipos_filtrados)
+
+
+
+    // console.log(equipos_filtrados)
     let filtros_botones = equipos_filtrados.filter(partido_resultado => {
-        if (botones_filtros.value == "Ganado") {
-            if ((partido_resultado.homeTeam.name.toLowerCase().includes(cajon_input.toLowerCase()) && partido_resultado.score.winner == "HOME_TEAM") ||
-                (partido_resultado.awayTeam.name.toLowerCase().includes(cajon_input.toLowerCase()) && partido_resultado.score.winner == "AWAY_TEAM")) {
-                return true
-            }
+        
+        function user_result(score,x,y ){
+            if (botones_filtros.value == score) {
+                if ((partido_resultado.homeTeam.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(cajon_input.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")) && partido_resultado.score.winner == x) ||
+                    (partido_resultado.awayTeam.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").includes(cajon_input.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")) && partido_resultado.score.winner == y)) {
+                    return true
+                }
+            } 
+
+        }
+        if (user_result("Ganado","HOME_TEAM","AWAY_TEAM")){
+            return true
+        } 
+        // if (botones_filtros.value == "Ganado") {
+        //     if ((partido_resultado.homeTeam.name.toLowerCase().includes(cajon_input.toLowerCase()) && partido_resultado.score.winner == "HOME_TEAM") ||
+        //         (partido_resultado.awayTeam.name.toLowerCase().includes(cajon_input.toLowerCase()) && partido_resultado.score.winner == "AWAY_TEAM")) {
+        //         return true
+        //     }
+        // }
+        
+        if (user_result("Perdido","AWAY_TEAM","HOME_TEAM")){
+            return true
         }
 
-        if (botones_filtros.value == "Perdido") {
-            if ((partido_resultado.homeTeam.name.toLowerCase().includes(cajon_input.toLowerCase()) && partido_resultado.score.winner == "AWAY_TEAM") ||
-                (partido_resultado.awayTeam.name.toLowerCase().includes(cajon_input.toLowerCase()) && partido_resultado.score.winner == "HOME_TEAM")) {
-                return true
-            }
-        }
+
+        // if (botones_filtros.value == "Perdido") {
+        //     if ((partido_resultado.homeTeam.name.toLowerCase().includes(cajon_input.toLowerCase()) && partido_resultado.score.winner == "AWAY_TEAM") ||
+        //         (partido_resultado.awayTeam.name.toLowerCase().includes(cajon_input.toLowerCase()) && partido_resultado.score.winner == "HOME_TEAM")) {
+        //         return true
+        //     }
+        // }
 
         if (botones_filtros.value == "Empatado" && partido_resultado.score.winner == "DRAW") {
             return true
@@ -176,9 +229,12 @@ function filtroEquipo(club) {
         if (botones_filtros.value == "Proximo" && partido_resultado.status == "SCHEDULED") {
             return true
         }
-
+        if (botones_filtros.value == "Proximo" && (partido_resultado.status != "SCHEDULED" || partido_resultado.status != "FINISHED")) {
+            return mostrar_message_proximos()
+        } else {
+            return quitar_message_proximos()
+        }
     })
-
 
 
 
@@ -208,15 +264,52 @@ function filtroEquipo(club) {
 //  (x.awayTeam.name.toLowerCase().includes(cajon_input.toLowerCase()) && x.score.winner == "AWAY_TEAM")  )
 
 
-function quitar_spinner(){
-    document.getElementById("spinner_loader").style.display="none"
-    document.getElementById("dots_spinner").style.visibility="hidden"
+
+function quitar_spinner() {
+    document.getElementById("spinner_loader").style.display = "none"
+    document.getElementById("dots_spinner").style.visibility = "hidden"
 }
 
-function mostrar_spinner(){
-    document.getElementById("spinner_loader").style.display="block"
-    document.getElementById("dots_spinner").style.visibility="visible"
+function mostrar_spinner() {
+    document.getElementById("spinner_loader").style.display = "block"
+    document.getElementById("dots_spinner").style.visibility = "visible"
 
 }
 
 quitar_spinner()
+
+quitar_message_proximos()
+
+quitar_message_valido()
+
+quitar_message_introduce()
+
+function quitar_message_proximos() {
+    document.getElementById("alerta").style.display = "none"
+    document.getElementById("alerta").style.visibility = "hidden"
+}
+
+function mostrar_message_proximos() {
+    document.getElementById("alerta").style.display = "block"
+    document.getElementById("alerta").style.visibility = "visible"
+}
+
+function quitar_message_valido() {
+    document.getElementById("alerta_valido").style.display = "none"
+    document.getElementById("alerta_valido").style.visibility = "hidden"
+}
+
+function mostrar_message_valido() {
+    document.getElementById("alerta_valido").style.display = "block"
+    document.getElementById("alerta_valido").style.visibility = "visible"
+}
+
+function quitar_message_introduce() {
+    document.getElementById("alerta_introduce").style.display = "none"
+    document.getElementById("alerta_introduce").style.visibility = "hidden"
+}
+
+function mostrar_message_introduce() {
+    document.getElementById("alerta_introduce").style.display = "block"
+    document.getElementById("alerta_introduce").style.visibility = "visible"
+}

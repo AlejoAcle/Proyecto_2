@@ -2,6 +2,10 @@ let equipo = equipos.teams
 
 datos_clubes(equipo)
 
+
+
+//función para recorrer el array superior, guardado como variable, y extraer el logo y su url
+
 function datos_clubes(data){
     let clubes = document.getElementById("contenedorLogos")
     for (let i = 0; i < data.length; i++) {

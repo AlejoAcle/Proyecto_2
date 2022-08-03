@@ -50,6 +50,12 @@ body{
     background-color: transparent;
     border: none;
 }
+/*LOGIN--------------------------*/
+form .login{
+    align-items: center;
+    margin-top: 150px;
+
+}
 /*TABLAS--------------------------*/
 .escudo{
     width: 30px;

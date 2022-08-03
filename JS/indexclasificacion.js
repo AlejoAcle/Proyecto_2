@@ -1,33 +1,35 @@
 let equipos_clasificacion = clasificacion.standings[0].table
-
-// function getFetch(url) {
-//     mostrar_spinner()
-//     fetch(url, {
-//         method: "GET",
-//         headers: {
-//             "X-Auth-Token": "40834f61c97f47db820d37a926c3ee72"
-//         }
-//     }).then(response => {
-//         if (response.ok) {
-//             return response.json();
-//         }
-//     }).then(data => {
-//         let equipos_clasificacion = data.standings[0].table
-//         quitar_spinner()
-//         clasificaciones(equipos_clasificacion)
-
-//     }).catch(err => {
-//         console.log(err);
-//         alert("Ha ocurrido un ERROR, vuelve a recargar la pagina !")
-//     })
-// }
-
-// getFetch("https://api.football-data.org/v2/competitions/2014/standings");
-
-
-
-
 clasificaciones(equipos_clasificacion)
+
+//  function getFetch(url) {
+//      mostrar_spinner()
+//      fetch(url, {
+//          method: "GET",
+//          headers: {
+//              "X-Auth-Token": "40834f61c97f47db820d37a926c3ee72"
+//          }
+//      }).then(response => {
+//          if (response.ok) {
+//              return response.json();
+//          }
+//      }).then(data => {
+//          let equipos_clasificacion = data.standings[0].table
+//          console.log(data)
+//          quitar_spinner()
+//          clasificaciones(equipos_clasificacion)
+
+//      }).catch(err => {
+//          console.log(err);
+//          alert("Ha ocurrido un ERROR, vuelve a recargar la pagina !")
+//      })
+//  }
+
+//  getFetch("https://api.football-data.org/v2/competitions/2014/standings");
+
+
+
+
+// clasificaciones(equipos_clasificacion)
 //Datos de clasificacion
 
 // console.log(clasificacion.standings[0].table)
@@ -66,7 +68,7 @@ clasificaciones(equipos_clasificacion)
 // console.log(clasificacion.standings[0].table[0].points)
 
 
-
+//funcion para extaer los datos y crear un array para poder posicionarlos en la tabla
 
 function clasificaciones(datos){
     let tabla_clasificacion = document.getElementById("t_clasificacion")
@@ -82,7 +84,7 @@ function clasificaciones(datos){
         partidos_jugados.innerHTML = datos[i].playedGames
         
         let ultimos = datos[i].form
-        // ultimos.innerHTML = datos[i].form;
+        ultimos.innerHTML = datos[i].form;
         ultimos=ultimos.replace(/W/g,"✔️")
         ultimos=ultimos.replace(/L/g,"❌")
         ultimos=ultimos.replace(/D/g,"➖")

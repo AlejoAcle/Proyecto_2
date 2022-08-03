@@ -1,11 +1,11 @@
 let partidos = matches.matches
-quitar_spinner()
+spinner_out()
 
 //FUNCION FETCH() DATOS TIEMPO REAL//
 
 
 // function getFetch(url) {
-//     mostrar_spinner()
+//     spinner_in()
 //     fetch(url, {
 //         method: "GET",
 //         headers: {
@@ -18,7 +18,7 @@ quitar_spinner()
 //     }).then(data => {
         
 //         let partidos = data.matches
-//         quitar_spinner()
+//         spinner_out()
 //         stadistics(partidos);
 //         stadistics2(partidos)
 
@@ -36,7 +36,7 @@ quitar_spinner()
 
 
 //ESTADÍSTICAS-------------------------------------------------------------------------//
-
+//Funcion para recorrer el array "master", recoger los datos y guardarlos en una variable array_stadistics (limpios)
 function stadistics(data) {
     let array_stadistics = []
     for (let i = 0; i < data.length; i++) {
@@ -63,12 +63,14 @@ function stadistics(data) {
         // console.log(goles_visitante)
 
         let equipo_local_encontrado;
-
+//creada la array filtrada y limpia, el bucle forEach, y sus condiciones, identifican x(parametro)con el id del equipo, si existe,
+// lo identifica con el nombre del equipo.
         array_stadistics.forEach(x => {
             if (x.id === local_team_id) {
                 equipo_local_encontrado = x;
             }
         })
+//si no encuentra ningun nombre, crea el objeto y lo introduce en la array.
         if (equipo_local_encontrado == undefined) {
             array_stadistics.push({
                 id: local_team_id,
@@ -76,12 +78,13 @@ function stadistics(data) {
                 goles: goles_local,
                 matches: 1
             })
+//en cualquier caso, una vez encontrado o creado, añade los partidos y los goles según se va jugando.
         } else {
             equipo_local_encontrado.goles += goles_local
             equipo_local_encontrado.matches++
             // estos partidos se van añadiendo a matches de la array creada
         }
-
+//iteramos igual pero para visitante, identificando el equipo,pero como visitante.
         let equipo_visitante_econtrado;
 
         array_stadistics.forEach(x => {
@@ -108,13 +111,51 @@ function stadistics(data) {
         }
 
     }
+//ordenamos la array de menos media de goles a mas media de goles
     array_stadistics.sort((a, b) => b.average - a.average)
     // console.log(array_stadistics)
-    t_stadistics(array_stadistics)
+    table_stadistics_top_five(array_stadistics)
 
 }
 
 stadistics(partidos)
+
+//Tabla ESTADISTICAS 5 equipos + goleadores--------------//
+
+//LA ARRAY A RECORER ES array_stadistics, los objetos....¡//
+function table_stadistics_top_five(partido_estadistica) {
+    let tabla_stadistics = document.getElementById("tabla_estadistica_partidos")
+    let data = partido_estadistica.slice(0, 5)
+    for (let i = 0; i < data.length; i++) {
+        const tr = document.createElement("tr")
+
+        let id_equipo_local = document.createElement("p")
+        id_equipo_local.innerHTML = data[i].id
+
+        let equipo_local = document.createElement("p")
+        equipo_local.innerHTML = data[i].name
+
+        let media = document.createElement("p")
+        media.innerHTML = data[i].average.toFixed(2)
+
+        let partido = document.createElement("p")
+        partido.innerHTML = data[i].matches
+
+        let img_logo_clubes = document.createElement("img")
+        img_logo_clubes.setAttribute("src", "https://crests.football-data.org/" + data[i].id + ".svg")
+        img_logo_clubes.classList.add("escudo_local")
+
+
+        let datos_estadisticos = [img_logo_clubes, equipo_local, media, partido]
+        for (let j = 0; j < datos_estadisticos.length; j++) {
+            const td = document.createElement("td")
+            td.append(datos_estadisticos[j])
+            tr.append(td)
+        }
+        tabla_stadistics.append(tr)
+    }
+}
+
 
 //Estadisticas 5 con menos goles le han marcado//
 
@@ -157,50 +198,13 @@ function stadistics2(equipos) {
     }
     console.log(array_menosGoles)
     array_menosGoles.sort((a,b)=> a.goles - b.goles)
-    t_stadistics2(array_menosGoles)
+    table_stadistics_less_goal(array_menosGoles)
 }
 stadistics2(partidos)
 
 
-//Tabla ESTADISTICAS--------------//
-
-//LA ARRAY A RECORER ES array_stadistics, los objetos....¡//
-function t_stadistics(partido_estadistica) {
-    let tabla_stadistics = document.getElementById("tabla_estadistica_partidos")
-    let data = partido_estadistica.slice(0, 5)
-    for (let i = 0; i < data.length; i++) {
-        const tr = document.createElement("tr")
-
-        let id_equipo_local = document.createElement("p")
-        id_equipo_local.innerHTML = data[i].id
-
-        let equipo_local = document.createElement("p")
-        equipo_local.innerHTML = data[i].name
-
-        let media = document.createElement("p")
-        media.innerHTML = data[i].average.toFixed(2)
-
-        let partido = document.createElement("p")
-        partido.innerHTML = data[i].matches
-
-        let img_logo_clubes = document.createElement("img")
-        img_logo_clubes.setAttribute("src", "https://crests.football-data.org/" + data[i].id + ".svg")
-        img_logo_clubes.classList.add("escudo_local")
-
-
-        let datos_estadisticos = [img_logo_clubes, equipo_local, media, partido]
-        for (let j = 0; j < datos_estadisticos.length; j++) {
-            const td = document.createElement("td")
-            td.append(datos_estadisticos[j])
-            tr.append(td)
-        }
-        tabla_stadistics.append(tr)
-    }
-}
-
-
-//Tabla ESTADISTICAS 2--------------//
-function t_stadistics2(partido_estadistica) {
+//Tabla ESTADISTICAS 2 5 equipos menos goleados como visitante--------------//
+function table_stadistics_less_goal(partido_estadistica) {
     let tabla_stadistics2 = document.getElementById("tabla_estadistica2_partidos")
     let data = partido_estadistica.slice(0, 5)
     for (let i = 0; i < data.length; i++) {
@@ -234,26 +238,15 @@ function t_stadistics2(partido_estadistica) {
 }
 
 
-function quitar_spinner(){
+function spinner_out(){
     document.getElementById("spinner_loader").style.display="none"
     document.getElementById("dots_spinner").style.visibility="hidden"
 }
 
-function mostrar_spinner(){
+function spinner_in(){
     document.getElementById("spinner_loader").style.display="block"
     document.getElementById("dots_spinner").style.visibility="visible"
 
 }
 
-function quitar_spinner(){
-    document.getElementById("spinner_loader").style.display="none"
-    document.getElementById("dots_spinner").style.visibility="hidden"
-}
-
-function mostrar_spinner(){
-    document.getElementById("spinner_loader").style.display="block"
-    document.getElementById("dots_spinner").style.visibility="visible"
-
-}
-
-quitar_spinner()
+spinner_out()
