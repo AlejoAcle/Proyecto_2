@@ -1,37 +1,37 @@
-let partidos = matches.matches
-spinner_out()
+// let partidos = matches.matches
+// spinner_out()
 
 //FUNCION FETCH() DATOS TIEMPO REAL//
 
 
-// function getFetch(url) {
-//     spinner_in()
-//     fetch(url, {
-//         method: "GET",
-//         headers: {
-//             "X-Auth-Token": "40834f61c97f47db820d37a926c3ee72"
-//         }
-//     }).then(response => {
-//         if (response.ok) {
-//             return response.json();
-//         }
-//     }).then(data => {
+function getFetch(url) {
+    spinner_in()
+    fetch(url, {
+        method: "GET",
+        headers: {
+            "X-Auth-Token": "40834f61c97f47db820d37a926c3ee72"
+        }
+    }).then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+    }).then(data => {
         
-//         let partidos = data.matches
-//         spinner_out()
-//         stadistics(partidos);
-//         stadistics2(partidos)
+        let partidos = data.matches
+        spinner_out()
+        stadistics(partidos);
+        stadistics2(partidos)
 
 
 
 
-//     }).catch(err => {
-//         console.log(err);
-//         alert("Ha ocurrido un ERROR, vuelve a recargar la pagina !")
-//     })
-// }
+    }).catch(err => {
+        console.log(err);
+        alert("Ha ocurrido un ERROR, vuelve a recargar la pagina !")
+    })
+}
 
-// getFetch("https://api.football-data.org/v2/competitions/2014/matches");
+getFetch("https://api.football-data.org/v2/competitions/2014/matches");
 
 
 
@@ -50,7 +50,7 @@ function stadistics(data) {
         let local_team_id = data[i].homeTeam.id
         // console.log(local_team_id)
 
-        let goles_local = data[i].score.fullTime.home
+        let goles_local = data[i].score.fullTime.homeTeam
         // console.log(goles_local)
 
         let visitante_team_name = data[i].awayTeam.name
@@ -59,7 +59,7 @@ function stadistics(data) {
         let visitante_team_id = data[i].awayTeam.id
         // console.log(visitante_team_id)
 
-        let goles_visitante = data[i].score.fullTime.away
+        let goles_visitante = data[i].score.fullTime.awayTeam
         // console.log(goles_visitante)
 
         let equipo_local_encontrado;
@@ -172,7 +172,7 @@ function stadistics2(equipos) {
         let nombre_visitante = equipos[i].awayTeam.name
         console.log(nombre_visitante)
 
-        let goles_marcados_local = equipos[i].score.fullTime.home
+        let goles_marcados_local = equipos[i].score.fullTime.homeTeam
         console.log(goles_marcados_local)
 
 

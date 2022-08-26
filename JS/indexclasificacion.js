@@ -1,30 +1,31 @@
-let equipos_clasificacion = clasificacion.standings[0].table
-clasificaciones(equipos_clasificacion)
+// let equipos_clasificacion = clasificacion.standings[0].table
+// clasificaciones(equipos_clasificacion)
 
-//  function getFetch(url) {
-//      mostrar_spinner()
-//      fetch(url, {
-//          method: "GET",
-//          headers: {
-//              "X-Auth-Token": "40834f61c97f47db820d37a926c3ee72"
-//          }
-//      }).then(response => {
-//          if (response.ok) {
-//              return response.json();
-//          }
-//      }).then(data => {
-//          let equipos_clasificacion = data.standings[0].table
-//          console.log(data)
-//          quitar_spinner()
-//          clasificaciones(equipos_clasificacion)
+ function getFetch(url) {
+     mostrar_spinner()
+     fetch(url, {
+         method: "GET",
+         headers: {
+             "X-Auth-Token": "40834f61c97f47db820d37a926c3ee72"
+         }
+     }).then(response => {
+         if (response.ok) {
+             return response.json();
+         }
+     }).then(data => {
+         let equipos_clasificacion = data.standings[0].table
+         console.log(equipos_clasificacion)
 
-//      }).catch(err => {
-//          console.log(err);
-//          alert("Ha ocurrido un ERROR, vuelve a recargar la pagina !")
-//      })
-//  }
+         quitar_spinner()
+         clasificaciones(equipos_clasificacion)
 
-//  getFetch("https://api.football-data.org/v2/competitions/2014/standings");
+     }).catch(err => {
+         console.log(err);
+         alert("Ha ocurrido un ERROR, vuelve a recargar la pagina !")
+     })
+ }
+
+ getFetch("https://api.football-data.org/v2/competitions/2014/standings");
 
 
 
@@ -83,11 +84,11 @@ function clasificaciones(datos){
         let partidos_jugados = document.createElement("p")
         partidos_jugados.innerHTML = datos[i].playedGames
         
-        let ultimos = datos[i].form
-        ultimos.innerHTML = datos[i].form;
-        ultimos=ultimos.replace(/W/g,"✔️")
-        ultimos=ultimos.replace(/L/g,"❌")
-        ultimos=ultimos.replace(/D/g,"➖")
+        // let ultimos = datos[i].form
+        // ultimos.innerHTML = datos[i].form;
+        // ultimos=ultimos.replace(/W/g,"✔️")
+        // ultimos=ultimos.replace(/L/g,"❌")
+        // ultimos=ultimos.replace(/D/g,"➖")
         
         let perdidos = document.createElement("p")
         perdidos.innerHTML =  datos[i].lost
@@ -111,10 +112,10 @@ function clasificaciones(datos){
         puntos.innerHTML = datos[i].points
 
         let escudo = document.createElement("img")
-        escudo.setAttribute("src",datos[i].team.crest)
+        escudo.setAttribute("src",datos[i].team.crestUrl)
         escudo.classList.add("escudo")
 
-        let clasi = [posicion,escudo,nombre_equipo,partidos_jugados,victorias,empates,perdidos,goles,goles_contra,diferencia_goles,puntos,ultimos]
+        let clasi = [posicion,escudo,nombre_equipo,partidos_jugados,victorias,empates,perdidos,goles,goles_contra,diferencia_goles,puntos]
         for (let j = 0; j < clasi.length; j++) {
             const td = document.createElement("td")
             td.append(clasi[j])

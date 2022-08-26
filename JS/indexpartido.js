@@ -1,36 +1,37 @@
-let partidos = matches.matches
+// let partidos = matches.matches
 
-datos_partidos(partidos)
+// datos_partidos(partidos)
 
 //FUNCION FETCH() DATOS TIEMPO REAL//
-// function getFetch(url) {
-//     mostrar_spinner()
-//     fetch(url, {
-//         method: "GET",
-//         headers: {
-//             "X-Auth-Token": "40834f61c97f47db820d37a926c3ee72"
-//         }
-//     }).then(response => {
-//         if (response.ok) {
-//             return response.json();
-//         }
-//     }).then(data => {
+function getFetch(url) {
+    mostrar_spinner()
+    fetch(url, {
+        method: "GET",
+        headers: {
+            "X-Auth-Token": "40834f61c97f47db820d37a926c3ee72"
+        }
+    }).then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+    }).then(data => {
 
-//         let partidos = data.matches
-//         quitar_spinner()
-//         let boton_busqueda = document.getElementById("boton_busqueda")
-//         boton_busqueda.addEventListener("click", () => {
-//         filtroEquipo(partidos)
-//      })
-//         datos_partidos(partidos)
+        let partidos = data.matches
+        console.log(partidos)
+        quitar_spinner()
+        let boton_busqueda = document.getElementById("boton_busqueda")
+        boton_busqueda.addEventListener("click", () => {
+        filtroEquipo(partidos)
+     })
+        datos_partidos(partidos)
 
-//     }).catch(err => {
-//         console.log(err);
-//         alert("Ha ocurrido un ERROR, vuelve a recargar la pagina !")
-//     })
-// }
+    }).catch(err => {
+        console.log(err);
+        alert("Ha ocurrido un ERROR, vuelve a recargar la pagina !")
+    })
+}
 
-// getFetch("https://api.football-data.org/v2/competitions/2014/matches");
+getFetch("https://api.football-data.org/v2/competitions/2014/matches");
 
 
 // console.log(matches.matches)
@@ -82,15 +83,25 @@ function datos_partidos(data) {
         // let resultado_local = document.createElement("p")
         // resultado_local = data[i].score.fullTime.home
 
-        let resultado = document.createElement("p")
-        resultado.innerHTML = data[i].score.fullTime.home + "-" + data[i].score.fullTime.away
+        // let resultado = document.createElement("p")
+        // resultado.innerHTML = data[i].score.fullTime.home + "-" + data[i].score.fullTime.away
+        let resultado = data[i].score.fullTime.homeTeam + "-" + data[i].score.fullTime.awayTeam
+            if(resultado === "null-null"){
+                resultado = "Proximamente"
+            }else{
+                resultado.textcontent = data[i].score.fullTime.homeTeam + "-" + data[i].score.fullTime.awayTeam
+            }
+
+
 
         let escudo_local = document.createElement("img")
-        escudo_local.setAttribute("src", data[i].homeTeam.crest)
+        // escudo_local.setAttribute("src", data[i].homeTeam.crest)
+        escudo_local.setAttribute("src", "https://crests.football-data.org/" + data[i].homeTeam.id + ".svg")
         escudo_local.classList.add("escudo_local")
 
         let escudo_visitante = document.createElement("img")
-        escudo_visitante.setAttribute("src", data[i].awayTeam.crest)
+        // escudo_visitante.setAttribute("src", data[i].awayTeam.crest)
+        escudo_visitante.setAttribute("src", "https://crests.football-data.org/" + data[i].awayTeam.id + ".svg")
         escudo_visitante.classList.add("escudo_visitante")
 
 
